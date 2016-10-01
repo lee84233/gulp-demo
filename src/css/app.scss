@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/*引入变量*/
+@import "variable.lc-no";
+
+/*在此写你的项目scss*/
+.h1{
+	color:$warning;
+	background: $tableHoverBgColor;
+}

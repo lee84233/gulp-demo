@@ -1,0 +1,31 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "gulp为主的前端自动化工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "前端自动化"
+  ],
+  "author": "Lee 842337932@qq.com",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.16.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-jshint": "^2.0.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3"
+  }
+}

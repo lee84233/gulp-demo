@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/*主色调*/
+$mainColor1:#2255a4;
+$mainColor1Hover:#3368ba;
+$mainColor2:#00a0e9;
+$mainColor2Hover:#018bca;
+
+/*字体颜色*/
+$fontgrey888:#888888;
+
+/*背景颜色*/
+$bodyBg:#f0f1f3;
+
+/*常用颜色*/
+$info:#0e90d2;
+$infoHover:#00a0e9;
+$danger:#dd514c;
+$dangerHover:#d7342e;
+$success:#5eb95e;
+$successHover:#4aaa4a;
+$warning:#F37B1D;
+$warningHover:#e0690c;
+
+/*边框颜色*/
+$borderColor:#d3d3d3;
+
+/*表格颜色*/
+$tableBorderColor:#ddd;
+$tableHoverBgColor:#e9e9e9;
+
+
+/*设置行高和行间距*/
+@mixin height_line($h){
+  height:$h;
+  line-height: $h;
+}
+
+/*过渡效果*/
+@mixin transFunc($s:0.4s){
+  -moz-transition:all $s;
+  -ms-transition:all $s;
+  -o-transition:all $s;
+  -webkit-transition:all $s;
+  transition:all $s;
+}
