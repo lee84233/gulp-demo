@@ -16,18 +16,31 @@ const gulp = require('gulp'),
 
     // 重命名
     rename = require('gulp-rename'),
-    // 浏览器自动刷新
-    livereload = require('gulp-livereload'),
+
     // 消息提示
     notify = require('gulp-notify'),
     // 删除文件
     del = require('del'),
     // 自动处理全部错误信息防止因为错误而导致 watch不正常工作
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'),
+
+    // 自动检测刷新
+    browserSync = require('browser-sync').create(),
+    reload      = browserSync.reload;
 
 
-var browserSync = require('browser-sync').create();
-var reload      = browserSync.reload;
+// Path
+var htmlPath = './view/*.{html,php}';
+
+var cssSrc = './src/css/';
+var cssDest = './view/assets/css/';
+
+var jsSrc = './src/js/';
+var jsDest = './view/assets/js/';
+
+
+//默认任务
+gulp.task('default',['serve']);
 
 // 静态服务器 + 监听 scss/html 文件
 gulp.task('serve', ['css_sass'], function() {
@@ -48,31 +61,6 @@ gulp.task('serve', ['css_sass'], function() {
     gulp.watch('src/images/**/*',['copy_images']);
     gulp.watch('view/*.{html,php}').on('change', reload);
 });
-
-
-// Path
-var htmlPath = './view/*.{html,php}';
-
-var cssSrc = './src/css/';
-var cssDest = './view/assets/css/';
-
-var jsSrc = './src/js/';
-var jsDest = './view/assets/js/';
-
-
-//默认任务
-gulp.task('default',['serve']);
-
-
-// 监听
-// gulp.task('watch',function(){
-//     livereload.listen();
-//     gulp.watch('src/css/*.scss',['css_clean']);
-//     gulp.watch('src/css/*.css',['copy_css']);
-//     gulp.watch('src/js/*.js',['js_deal']);
-//     gulp.watch('src/images/**/*',['copy_images']);
-//     gulp.watch('view/*.{html,php}',['html']);
-// });
 
 
 /**
@@ -206,9 +194,9 @@ gulp.task('del_all',
 * 复制
 */
 // 复制所有
-gulp.task('copy_all',function(){
-    gulp.run('copy_css','js_deal','js_deal2','copy_images','copy_plugins','copy_others','copy_fonts');
-});
+gulp.task('copy_all',
+    ['copy_css','js_deal','js_deal2','copy_images','copy_plugins','copy_others','copy_fonts'],
+    function(){});
 // copy css
 gulp.task('copy_css',['css_clean'],function(){
     return gulp.src('src/css/*.min.css')
@@ -232,3 +220,33 @@ gulp.task('copy_others',function(){
     return gulp.src('src/others/**/*')
     .pipe( gulp.dest('view/assets/others') );
 });
+
+
+
+/*
+* 废弃的任务
+* livereload 监听文件的改变，需要浏览器安装livereload插件（谷歌浏览器应用市场下载）
+* 文件改变后执行的任务里需要加管道  .pipe( livereload() )
+ */
+
+ // 浏览器自动刷新，已废弃
+ // var livereload = require('gulp-livereload'),
+
+// 监听
+// gulp.task('watch',function(){
+//     // 监听文件
+//     livereload.listen();
+//     // 需要监听的文件
+//     gulp.watch('src/css/*.scss',['css_clean']);
+//     gulp.watch('src/css/*.css',['copy_css']);
+//     gulp.watch('src/js/*.js',['js_deal']);
+//     gulp.watch('src/images/**/*',['copy_images']);
+//     gulp.watch('view/*.{html,php}',['html']);
+// });
+
+// 监听html
+/*gulp.task('html',function(){
+    return gulp.src( htmlPath )
+    .pipe( livereload() )
+    .pipe( reload({stream: true}) );
+});*/

@@ -21,7 +21,7 @@
 </head>
 <body class="">
 
-	<h1 class="h1">hello,world.</h1>
+	<h1 class="h1" data-hook="h1 hh">hello,world.</h1>
 	<table class="lc-table lc-table-bordered">
 		<tr>
 			<td>我是001</td>
@@ -45,5 +45,10 @@
 
 <script src="assets/js/jquery-1.12.4.min.js"></script>
 <script src="assets/js/app.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.hook('h1').text(111);
+	});
+</script>
 </body>
 </html>

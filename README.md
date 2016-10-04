@@ -1,7 +1,8 @@
 # gulp demo
 
 ## gulp default task
-
+启动locahost:3000
+根目录为 `./view`
 
 ## css处理
 
