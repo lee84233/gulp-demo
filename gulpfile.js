@@ -43,7 +43,7 @@ var jsDest = './view/assets/js/';
 gulp.task('default',['serve']);
 
 // 静态服务器 + 监听 scss/html 文件
-gulp.task('serve', ['css_sass'], function() {
+gulp.task('serve', ['css_clean','js_deal'], function() {
 
     browserSync.init({
         // 静态服务器
@@ -59,6 +59,7 @@ gulp.task('serve', ['css_sass'], function() {
     gulp.watch('src/css/*.css',['copy_css']);
     gulp.watch('src/js/*.js',['js_deal']);
     gulp.watch('src/images/**/*',['copy_images']);
+    gulp.watch('src/plugins/**/*',['copy_plugins']);
     gulp.watch('view/*.{html,php}').on('change', reload);
 });
 
@@ -69,7 +70,7 @@ gulp.task('serve', ['css_sass'], function() {
  * @date 2016-07-04
  */
 gulp.task('css_sass',function(){
-    return gulp.src( [cssSrc+'*.scss','!src/css/*.lc-no.scss'] )
+    return gulp.src( [cssSrc+'*.scss','!src/css/*.lcno.scss'] )
     .pipe( plumber({errorHandler: notify.onError("Error: <%= error.message %>")}) )
     .pipe( sass({
         // nested:默认 嵌套缩进的css代码
@@ -146,17 +147,6 @@ gulp.task('html',function(){
 });
 
 
-// 复制插件 监听插件库
-gulp.task('copy_plugins',function(){
-    return gulp.src('src/plugins/**')
-    .pipe( gulp.dest('view/assets/plugins/') );
-});
-var plugins = gulp.watch('src/plugins/**',['copy_plugins']);
-plugins.on('change',function() {
-    console.log('Plugin has changed.');
-});
-
-
 /*
 *   删除文件
 */
@@ -220,7 +210,15 @@ gulp.task('copy_others',function(){
     return gulp.src('src/others/**/*')
     .pipe( gulp.dest('view/assets/others') );
 });
-
+// 复制插件 监听插件库
+gulp.task('copy_plugins',function(){
+    return gulp.src('src/plugins/**')
+    .pipe( gulp.dest('view/assets/plugins/') );
+});
+var plugins = gulp.watch('src/plugins/**',['copy_plugins']);
+plugins.on('change',function() {
+    console.log('Plugin has changed.');
+});
 
 
 /*

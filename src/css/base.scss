@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-/*normalize.css*/
-@import "normalize.lc-no";
 /*引入变量*/
-@import "variable.lc-no";
+@import "variable.lcno";
+/*normalize.css*/
+@import "normalize.lcno";
 /*填充*/
-@import "marginPadding.lc-no";
+@import "marginPadding.lcno";
 
 /*reset*/
 *{
@@ -45,7 +45,7 @@ i{
 
 .lc-text-main2{ color:$mainColor2; }
 
-.lc-text-grey888{ color:$fontgrey888!important; }
+.lc-text-grey1{ color:$fontgrey1!important; }
 .lc-text-white{ color:#fff!important; }
 
 .lc-text-info,.lc-link-info{ color:$info!important; }

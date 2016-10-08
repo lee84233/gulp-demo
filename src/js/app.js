@@ -1,7 +1,7 @@
 
 // iconfont
-var iconfontUrl = '//at.alicdn.com/t/font_1473830886_520488.css';
-$('#iconfont').attr('href',iconfontUrl);
+// var iconfontUrl = '//at.alicdn.com/t/font_1473830886_520488.css';
+// $('#iconfont').attr('href',iconfontUrl);
 
 
 $(document).ready(function() {
@@ -15,8 +15,8 @@ $(document).ready(function() {
 			// 获取当前时间
 			var currentTime = getDateFunc();
 			// cookie
-			if( getCookie('browserWarn')!=currentTime ){
 				$('#browserCnt').show();
+			if( getCookie('browserWarn')!=currentTime ){
 			}
 			// 关闭浏览器提示
 			$('#closeBrowser').click(function() {

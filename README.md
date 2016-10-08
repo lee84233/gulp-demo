@@ -1,16 +1,16 @@
 # gulp demo
 
 ## gulp default task
-å¯åŠ¨locahost:3000
-æ ¹ç›®å½•ä¸º `./view`
+Æô¶¯web·şÎñÆ÷
+¸ùÄ¿Â¼Îª `./view`
 
-## csså¤„ç†
+## css´¦Àí
 
-### scssé¢„å¤„ç†
+### scssÔ¤´¦Àí
 ```
-// scssé¢„å¤„ç†ä¸ºcss
+// scssÔ¤´¦ÀíÎªcss
 gulp css_scss
 
-// csså‹ç¼©ä¸º *.min.css
+// cssÑ¹ËõÎª *.min.css
 gulp css_clean
 ```

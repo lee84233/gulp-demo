@@ -3,51 +3,54 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="海尔，信息共享平台，DTS">
-	<meta name="description" content="信息共享平台">
+	<meta name="keywords" content="gulp,demo">
+	<meta name="description" content="gup demo">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>gulp and 自己框架 demo</title>
-
 	<!-- Set render engine for 360 browser -->
 	<meta name="renderer" content="webkit">
-
 	<!-- No Baidu Siteapp-->
-	<meta http-equiv="Cache-Control" content="no-siteapp"/>
-
-	<link rel="icon" type="image/png" href="favicon.png">
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<link rel="icon" type="image/png" href="favicon.ico">
+	<title>gulp demo</title>
 	<link rel="stylesheet" href="assets/css/base.min.css">
 	<link rel="stylesheet" href="assets/css/app.min.css">
 	<link id="iconfont" rel="stylesheet" href="">
+	<!--[if lt IE 9]>
+	  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 </head>
-<body class="">
-
+<body>
+<!-- 浏览器升级提示 -->
+<div class="browserCnt lc-bg-danger lc-nbfc lc-padding-horizontal-xl lc-padding-vertical-sm lc-hide" id="browserCnt">
+	<span class="lc-show lc-fl lc-text-white">您正在使用过时的浏览器，请及时升级获得更好浏览体验。</span>
+	<button class="lc-btn lc-btn-default lc-fr lc-radius-4 lc-margin-left" id="closeBrowser" type="button">明日提醒我</button>
+	<a class="lc-btn lc-btn-success lc-fr lc-radius-4" href="http://browsehappy.com/" target="_blank">浏览器升级</a>
+</div>
+<!-- 在此写你的代码 -->
 	<h1 class="h1" data-hook="h1 hh">hello,world.</h1>
-	<table class="lc-table lc-table-bordered">
-		<tr>
-			<td>我是001</td>
-			<td>我是002</td>
-			<td>我是003</td>
-			<td>我是004</td>
-			<td>我是005</td>
-			<td>我是006</td>
-			<td>我是007</td>
-		</tr>
-		<tr>
-			<td>我是001</td>
-			<td>我是002</td>
-			<td>我是003</td>
-			<td>我是004</td>
-			<td>我是005</td>
-			<td>我是006</td>
-			<td>我是007</td>
-		</tr>
-	</table>
+	<input type="text" placeholder="测试">
+
+	<div id="box" style="width:400px;height:400px;background:#096;display: none;">随便写点</div>
+	<button id="btn" type="button">btn</button>
 
 <script src="assets/js/jquery-1.12.4.min.js"></script>
 <script src="assets/js/app.min.js"></script>
+<!-- plugins -->
+<script src="assets/plugins/placeholder/jquery.placeholder.min.js"></script>
+<script src="assets/plugins/layer/layer.js"></script>
 <script>
 	$(document).ready(function() {
 		$.hook('h1').text(111);
+		$('input,textarea').placeholder();
+
+		$('#btn').click(function(event) {
+			layer.open({
+				type:1,
+				area:['400'],
+				content:$('#box'),
+			});
+		});
 	});
 </script>
 </body>

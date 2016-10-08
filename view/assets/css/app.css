@@ -8,6 +8,16 @@
 /*表格颜色*/
 /*设置行高和行间距*/
 /*过渡效果*/
+/*placeholder*/
+.placeholder {
+  color: #666;
+}
+
+/*浏览器提示*/
+.browserCnt > span {
+  line-height: 32px;
+}
+
 /*在此写你的项目scss*/
 .h1 {
   color: #F37B1D;

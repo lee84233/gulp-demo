@@ -1,7 +1,17 @@
 @charset "UTF-8";
 
 /*引入变量*/
-@import "variable.lc-no";
+@import "variable.lcno";
+
+
+/*placeholder*/
+.placeholder{ color:#666; }
+
+/*浏览器提示*/
+.browserCnt{
+	> span{ line-height: 32px; }
+}
+
 
 /*在此写你的项目scss*/
 .h1{
