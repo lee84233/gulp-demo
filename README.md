@@ -1,16 +1,5 @@
 # gulp demo
 
 ## gulp default task
-Æô¶¯web·şÎñÆ÷
-¸ùÄ¿Â¼Îª `./view`
+å¯åŠ¨æœåŠ¡å™¨
 
-## css´¦Àí
-
-### scssÔ¤´¦Àí
-```
-// scssÔ¤´¦ÀíÎªcss
-gulp css_scss
-
-// cssÑ¹ËõÎª *.min.css
-gulp css_clean
-```
