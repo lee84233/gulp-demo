@@ -51,15 +51,17 @@ gulp.task('serve', ['copy_all'], function() {
             baseDir: "./view",
         },
         // 默认打开浏览器
-        browser: "chrome"
+        browser: "chrome",
+        //不显示在浏览器中的任何通知。
+        notify: false
 
         // 代理
         // proxy: "你的域名或IP"
     });
 
     gulp.watch(cssSrc+'*.scss',['css_clean']);
-    gulp.watch(cssSrc+'*.min.css',['copy_css']);
-    gulp.watch([cssSrc+'*.css','!src/css/*.min.css'],['css_clean']);
+    gulp.watch(cssSrc+'*.min.css',['css_minCss']);
+    gulp.watch([cssSrc+'*.css','!src/css/*.min.css'],['css_css']);
 
     gulp.watch('src/js/*.js',['js_deal']);
     gulp.watch('src/images/**/*',['copy_images']);
@@ -113,17 +115,43 @@ gulp.task('css_clean',['css_sass'],function(){
     .pipe( gulp.dest( cssDest ) )
     // .pipe( livereload() )
     .pipe( reload({stream: true}) );
-
 });
 
+// src css
+gulp.task('css_css',['css_clean'],function(){
+    return gulp.src([cssSrc+'*.css','!src/css/*.min.css'])
+    .pipe( gulp.dest('view/assets/css') );
+});
 
 // copy css
-gulp.task('copy_css',['css_clean'],function(){
+gulp.task('css_minCss',['css_clean'],function(){
     return gulp.src('src/css/*.min.css')
     .pipe( gulp.dest('view/assets/css') );
 });
 
 
+// var watch_minJs = gulp.watch('./src/css/*.min.css',['css_minCss']);
+/*watch_minJs.on('change',function(){
+    console.log('*.min.css有改动.');
+});
+watch_minJs.on('added',function(){
+    console.log('*.min.css有增加.');
+});
+watch_minJs.on('deleted',function(){
+    console.log('*.min.css有删除.');
+});*/
+
+
+var watch_minJs = gulp.watch('./src/css/*.min.css',function(event){
+    var e = event.type;
+    if(e==='change'){
+        console.log('*.min.css有改动.');
+    }else if(e==='added'){
+        console.log('*.min.css有增加.');
+    }else if(e==='deleted'){
+        console.log('*.min.css有删除.');
+    }
+});
 
 
 
@@ -204,7 +232,7 @@ gulp.task('del_all',
 */
 // 复制所有
 gulp.task('copy_all',
-    ['copy_css','js_deal','copy_images','copy_plugins','copy_others','copy_fonts'],
+    ['css_minCss','js_deal','copy_images','copy_plugins','copy_others','copy_fonts'],
     function(){});
 
 // copy fonts
