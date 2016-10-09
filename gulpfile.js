@@ -43,27 +43,31 @@ var jsDest = './view/assets/js/';
 gulp.task('default',['serve']);
 
 // 静态服务器 + 监听 scss/html 文件
-gulp.task('serve', ['css_clean','js_deal'], function() {
+gulp.task('serve', ['copy_all'], function() {
 
     browserSync.init({
         // 静态服务器
         server: {
             baseDir: "./view",
         },
+        // 默认打开浏览器
         browser: "chrome"
 
         // 代理
         // proxy: "你的域名或IP"
     });
 
-    gulp.watch('src/css/*.scss',['css_clean']);
-    gulp.watch('src/css/*.css',['copy_css']);
+    gulp.watch(cssSrc+'*.scss',['css_clean']);
+    gulp.watch(cssSrc+'*.min.css',['copy_css']);
+    gulp.watch([cssSrc+'*.css','!src/css/*.min.css'],['css_clean']);
+
     gulp.watch('src/js/*.js',['js_deal']);
     gulp.watch('src/images/**/*',['copy_images']);
     gulp.watch('src/plugins/**/*',['copy_plugins']);
     gulp.watch('view/*.{html,php}').on('change', reload);
 
 });
+
 
 
 
@@ -91,7 +95,6 @@ gulp.task('css_sass',function(){
         remove:true //是否去掉不必要的前缀 默认：true
     }) )
     .pipe( gulp.dest( cssDest ) );
-
 });
 
 /**
@@ -112,6 +115,14 @@ gulp.task('css_clean',['css_sass'],function(){
     .pipe( reload({stream: true}) );
 
 });
+
+
+// copy css
+gulp.task('copy_css',['css_clean'],function(){
+    return gulp.src('src/css/*.min.css')
+    .pipe( gulp.dest('view/assets/css') );
+});
+
 
 
 
@@ -195,12 +206,7 @@ gulp.task('del_all',
 gulp.task('copy_all',
     ['copy_css','js_deal','copy_images','copy_plugins','copy_others','copy_fonts'],
     function(){});
-// copy css
-gulp.task('copy_css',['css_clean'],function(){
-    return gulp.src('src/css/*.min.css')
-    .pipe( gulp.dest('view/assets/css') );
 
-});
 // copy fonts
 gulp.task('copy_fonts',function(){
     return gulp.src('src/fonts/**')
