@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="gulp,demo">
 	<meta name="description" content="gup demo">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Set render engine for 360 browser -->
 	<meta name="renderer" content="webkit">
 	<!-- No Baidu Siteapp-->
@@ -21,6 +21,7 @@
 	<![endif]-->
 </head>
 <body>
+
 <!-- 浏览器升级提示 -->
 <div class="browserCnt lc-bg-danger lc-nbfc lc-padding-horizontal-xl lc-padding-vertical-sm lc-hide" id="browserCnt">
 	<span class="lc-show lc-fl lc-text-white">您正在使用过时的浏览器，请及时升级获得更好浏览体验。</span>
@@ -28,30 +29,11 @@
 	<a class="lc-btn lc-btn-success lc-fr lc-radius-4" href="http://browsehappy.com/" target="_blank">浏览器升级</a>
 </div>
 <!-- 在此写你的代码 -->
-	<h1 class="h1" data-hook="h1 hh">hello,world.</h1>
-	<input type="text" placeholder="测试">
+<h1 class="h1" data-hook="h1 hh">hello,world.</h1>
 
-	<div id="box" style="width:400px;height:400px;background:#096;display: none;">随便写点</div>
-	<button id="btn" type="button">btn</button>
 
+<!-- script -->
 <script src="assets/js/jquery-1.12.4.min.js"></script>
 <script src="assets/js/app.min.js"></script>
-<!-- plugins -->
-<script src="assets/plugins/placeholder/jquery.placeholder.min.js"></script>
-<script src="assets/plugins/layer/layer.js"></script>
-<script>
-	$(document).ready(function() {
-		$.hook('h1').text(111);
-		$('input,textarea').placeholder();
-
-		$('#btn').click(function(event) {
-			layer.open({
-				type:1,
-				area:['400'],
-				content:$('#box'),
-			});
-		});
-	});
-</script>
 </body>
 </html>

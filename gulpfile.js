@@ -1,32 +1,29 @@
 const gulp = require('gulp'),
-
     // css
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
     autoprefixer = require('gulp-autoprefixer'),
-
     // js
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-
     // 图片处理
     // imagemin = require('gulp-imagemin'),
     // cache = require('gulp-cache'),
     // pngquant = require('imagemin-pngquant'),
-
     // 重命名
     rename = require('gulp-rename'),
-
     // 消息提示
     notify = require('gulp-notify'),
     // 删除文件
     del = require('del'),
     // 自动处理全部错误信息防止因为错误而导致 watch不正常工作
     plumber = require('gulp-plumber'),
-
     // 自动检测刷新
     browserSync = require('browser-sync').create(),
     reload      = browserSync.reload;
+
+
+
 
 
 // Path
@@ -39,6 +36,9 @@ var jsSrc = './src/js/';
 var jsDest = './view/assets/js/';
 
 
+
+
+
 //默认任务
 gulp.task('default',['serve']);
 
@@ -48,8 +48,9 @@ gulp.task('serve', ['css_clean','js_deal'], function() {
     browserSync.init({
         // 静态服务器
         server: {
-            baseDir: "./view"
-        }
+            baseDir: "./view",
+        },
+        browser: "chrome"
 
         // 代理
         // proxy: "你的域名或IP"
@@ -61,7 +62,10 @@ gulp.task('serve', ['css_clean','js_deal'], function() {
     gulp.watch('src/images/**/*',['copy_images']);
     gulp.watch('src/plugins/**/*',['copy_plugins']);
     gulp.watch('view/*.{html,php}').on('change', reload);
+
 });
+
+
 
 
 /**
@@ -87,6 +91,7 @@ gulp.task('css_sass',function(){
         remove:true //是否去掉不必要的前缀 默认：true
     }) )
     .pipe( gulp.dest( cssDest ) );
+
 });
 
 /**
@@ -105,7 +110,11 @@ gulp.task('css_clean',['css_sass'],function(){
     .pipe( gulp.dest( cssDest ) )
     // .pipe( livereload() )
     .pipe( reload({stream: true}) );
+
 });
+
+
+
 
 
 /**
@@ -134,17 +143,13 @@ gulp.task('js_deal2',function(){
     .pipe( reload({stream: true}) );
 });
 
-var watch_minJs = gulp.watch('src/js/*.min.js',['js_deal2']);
+/*var watch_minJs = gulp.watch('src/js/*.min.js',['js_deal2']);
 watch_minJs.on('change',function(){
     console.log('*.min.js有变动.');
-});
+});*/
 
-// 监听html
-gulp.task('html',function(){
-    return gulp.src( htmlPath )
-    // .pipe( livereload() )
-    .pipe( reload({stream: true}) );
-});
+
+
 
 
 /*
@@ -180,17 +185,21 @@ gulp.task('del_all',
     function(){});
 
 
+
+
+
 /*
 * 复制
 */
 // 复制所有
 gulp.task('copy_all',
-    ['copy_css','js_deal','js_deal2','copy_images','copy_plugins','copy_others','copy_fonts'],
+    ['copy_css','js_deal','copy_images','copy_plugins','copy_others','copy_fonts'],
     function(){});
 // copy css
 gulp.task('copy_css',['css_clean'],function(){
     return gulp.src('src/css/*.min.css')
     .pipe( gulp.dest('view/assets/css') );
+
 });
 // copy fonts
 gulp.task('copy_fonts',function(){
@@ -210,15 +219,14 @@ gulp.task('copy_others',function(){
     return gulp.src('src/others/**/*')
     .pipe( gulp.dest('view/assets/others') );
 });
-// 复制插件 监听插件库
+// 复制插件
 gulp.task('copy_plugins',function(){
     return gulp.src('src/plugins/**')
     .pipe( gulp.dest('view/assets/plugins/') );
 });
-var plugins = gulp.watch('src/plugins/**',['copy_plugins']);
-plugins.on('change',function() {
-    console.log('Plugin has changed.');
-});
+
+
+
 
 
 /*
