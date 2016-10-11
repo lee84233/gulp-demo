@@ -5,18 +5,16 @@ $('#iconfont').attr('href',iconfontUrl);
 
 
 $(document).ready(function() {
-
+	
 	// IE
 	if( myBrowser()=='IE' ){
-		if(myBrowser(true)<=9){
-			// placeholder
-			$('input, textarea').placeholder();
+		if(myBrowser("IEVersion")<=9){
 
 			// 获取当前时间
 			var currentTime = getDateFunc();
 			// cookie
-				$('#browserCnt').show();
 			if( getCookie('browserWarn')!=currentTime ){
+				$('#browserCnt').show();
 			}
 			// 关闭浏览器提示
 			$('#closeBrowser').click(function() {
@@ -34,13 +32,22 @@ $(document).ready(function() {
 * d30是代表30天
 * setCookie("name","hayden","s20")
 */
+/**
+ * 设置cookie
+ * @param {[string]} name  [键名]
+ * @param {[string]} value [键值]
+ * @param {[string]} time  [过期时间，可选 默认1天]
+ * s20是代表20秒
+ * h12是代表12小时
+ * d30是代表30天
+ */
 function setCookie(name,value,time){
-  var strsec = getsec(time);
-  var exp = new Date();
-  exp.setTime(exp.getTime() + strsec*1);
-  document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	time = time?time:'d1';
+	var strsec = getsec(time);
+	var exp = new Date();
+	exp.setTime(exp.getTime() + strsec*1);
+	document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
 }
-
 // 读取cookies
 function getCookie(name){
 	var arr,reg = new RegExp("(^| )"+name+"=([^;]*)(;|$)");
@@ -56,9 +63,9 @@ function delCookie(name){
   exp.setTime(exp.getTime() - 1);
   var cval=getCookie(name);
   if(cval!=null)
-    document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    document.cookie= name +"="+cval+";expires="+exp.toGMTString();
 }
-// 事件设置
+// 时间设置
 function getsec(str){
   var str1=str.substring(1,str.length)*1;
   var str2=str.substring(0,1);
@@ -93,6 +100,7 @@ function getsec(str){
 		}
 	});
 })(jQuery);
+
 
 /**
  * [获取当前日期，格式化日期]
@@ -139,6 +147,7 @@ function getDateFunc(current,style){
 
 }
 
+
 /**
  * 判断浏览器
  * @param  {[bool]} IEVersion [可选，判断IE版本时值为true]
@@ -154,7 +163,7 @@ function myBrowser(IEVersion){
     var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera;
 
     // 判定浏览器
-    if(!IEVersion){
+    if(IEVersion!=="IEVersion"){
 	    //判断是否Opera浏览器
 	    if (isOpera) {
 	        return "Opera";
