@@ -18,6 +18,8 @@ const gulp = require('gulp'),
     del = require('del'),
     // 自动处理全部错误信息防止因为错误而导致 watch不正常工作
     plumber = require('gulp-plumber'),
+    // 仅传递更改过的文件
+    changed = require('gulp-changed');
     // 自动检测刷新
     browserSync = require('browser-sync').create(),
     reload      = browserSync.reload;
@@ -43,7 +45,7 @@ var jsDest = './view/assets/js/';
 gulp.task('default',['serve']);
 
 // 静态服务器 + 监听 scss/html 文件
-gulp.task('serve', ['copy_all'], function() {
+gulp.task('serve', function() {
 
     browserSync.init({
         // 静态服务器
@@ -81,6 +83,12 @@ gulp.task('serve', ['copy_all'], function() {
  */
 gulp.task('css_sass',function(){
     return gulp.src( [cssSrc+'*.scss','!src/css/*.lcno.scss'] )
+
+    // `changed` 任务需要提前知道目标目录位置
+    // 才能找出哪些文件是被修改过的
+    // .pipe( changed( cssDest ) )
+    // 只有被更改过的文件才会通过这里
+
     .pipe( plumber({errorHandler: notify.onError("Error: <%= error.message %>")}) )
     .pipe( sass({
         // nested:默认 嵌套缩进的css代码
@@ -96,7 +104,8 @@ gulp.task('css_sass',function(){
         //        transform: rotate(45deg);
         remove:true //是否去掉不必要的前缀 默认：true
     }) )
-    .pipe( gulp.dest( cssDest ) );
+    .pipe( gulp.dest( cssDest ) )
+    .pipe( reload({stream: true}) );
 });
 
 /**
@@ -118,15 +127,17 @@ gulp.task('css_clean',['css_sass'],function(){
 });
 
 // src css
-gulp.task('css_css',['css_clean'],function(){
-    return gulp.src([cssSrc+'*.css','!src/css/*.min.css'])
-    .pipe( gulp.dest('view/assets/css') );
+gulp.task('css_css',function(){
+    return gulp.src([cssSrc+'*.css','!./src/css/*.min.css'])
+    .pipe( gulp.dest('view/assets/css') )
+    .pipe( reload({stream: true}) );
 });
 
 // copy css
-gulp.task('css_minCss',['css_clean'],function(){
-    return gulp.src('src/css/*.min.css')
-    .pipe( gulp.dest('view/assets/css') );
+gulp.task('css_minCss',function(){
+    return gulp.src(cssSrc+'*.min.css')
+    .pipe( gulp.dest('view/assets/css') )
+    .pipe( reload({stream: true}) );
 });
 
 
@@ -142,17 +153,6 @@ watch_minJs.on('deleted',function(){
 });*/
 
 
-var watch_minJs = gulp.watch('./src/css/*.min.css',function(event){
-    var e = event.type;
-    if(e==='change'){
-        console.log('*.min.css有改动.');
-    }else if(e==='added'){
-        console.log('*.min.css有增加.');
-    }else if(e==='deleted'){
-        console.log('*.min.css有删除.');
-    }
-});
-
 
 
 
@@ -166,6 +166,9 @@ gulp.task('js_deal', ['js_deal2'],function() {
     .pipe( plumber({errorHandler: notify.onError("Error: <%= error.message %>")}) )
     .pipe( jshint() )
     .pipe( jshint.reporter('default') )
+
+    .pipe( gulp.dest(jsDest) )
+
     .pipe( uglify() )
     .pipe( rename(function(path){
         path.basename += '.min'
@@ -232,13 +235,16 @@ gulp.task('del_all',
 */
 // 复制所有
 gulp.task('copy_all',
-    ['css_minCss','js_deal','copy_images','copy_plugins','copy_others','copy_fonts'],
+    ['copy_css','js_deal','copy_images','copy_plugins','copy_others','copy_fonts'],
     function(){});
 
+// copy css
+gulp.task('copy_css',['css_clean','css_css','css_minCss'], function(){});
 // copy fonts
 gulp.task('copy_fonts',function(){
     return gulp.src('src/fonts/**')
-    .pipe( gulp.dest('view/assets/fonts') );
+    .pipe( gulp.dest('view/assets/fonts') )
+    .pipe( reload({stream: true}) );
 });
 // copy images
 gulp.task('copy_images',function(){
@@ -251,12 +257,14 @@ gulp.task('copy_images',function(){
 // 复制others
 gulp.task('copy_others',function(){
     return gulp.src('src/others/**/*')
-    .pipe( gulp.dest('view/assets/others') );
+    .pipe( gulp.dest('view/assets/others') )
+    .pipe( reload({stream: true}) );
 });
 // 复制插件
 gulp.task('copy_plugins',function(){
-    return gulp.src('src/plugins/**')
-    .pipe( gulp.dest('view/assets/plugins/') );
+    return gulp.src('src/plugins/**/*')
+    .pipe( gulp.dest('view/assets/plugins/') )
+    .pipe( reload({stream: true}) );
 });
 
 
