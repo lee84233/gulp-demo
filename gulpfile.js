@@ -7,7 +7,7 @@ const gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     // 图片处理
-    // imagemin = require('gulp-imagemin'),
+    imagemin = require('gulp-imagemin'),
     // cache = require('gulp-cache'),
     // pngquant = require('imagemin-pngquant'),
     // 重命名
@@ -37,12 +37,24 @@ var cssDest = './view/assets/css/';
 var jsSrc = './src/js/';
 var jsDest = './view/assets/js/';
 
+var fontsSrc = './src/fonts/';
+var fontsDest = './view/assets/fonts/';
+
+var imagesSrc = './src/images/';
+var imagesDest = './view/assets/images/';
+
+var pluginsSrc = './src/plugins/';
+var pluginsDest = './view/assets/plugins/';
+
+var othersSrc = './src/others/';
+var othersDest = './view/assets/others/';
+
 
 
 
 
 //默认任务
-gulp.task('default',['serve']);
+gulp.task('default',['serve','copy_css','js_deal']);
 
 // 静态服务器 + 监听 scss/html 文件
 gulp.task('serve', function() {
@@ -61,14 +73,14 @@ gulp.task('serve', function() {
         // proxy: "你的域名或IP"
     });
 
-    gulp.watch(cssSrc+'*.scss',['css_clean']);
-    gulp.watch(cssSrc+'*.min.css',['css_minCss']);
-    gulp.watch([cssSrc+'*.css','!src/css/*.min.css'],['css_css']);
+    gulp.watch( cssSrc+'*.scss',['css_clean'] );
+    gulp.watch( cssSrc+'*.min.css',['css_minCss'] );
+    gulp.watch( [cssSrc+'*.css','!src/css/*.min.css'],['css_css'] );
 
-    gulp.watch('src/js/*.js',['js_deal']);
-    gulp.watch('src/images/**/*',['copy_images']);
-    gulp.watch('src/plugins/**/*',['copy_plugins']);
-    gulp.watch('view/*.{html,php}').on('change', reload);
+    gulp.watch( jsSrc+'*.js',['js_deal'] );
+    gulp.watch( imagesSrc+'**/*',['copy_images'] );
+    gulp.watch( pluginsSrc+'**/*',['copy_plugins'] );
+    gulp.watch( htmlPath ).on('change', reload);
 
 });
 
@@ -136,21 +148,9 @@ gulp.task('css_css',function(){
 // copy css
 gulp.task('css_minCss',function(){
     return gulp.src(cssSrc+'*.min.css')
-    .pipe( gulp.dest('view/assets/css') )
+    .pipe( gulp.dest(cssDest) )
     .pipe( reload({stream: true}) );
 });
-
-
-// var watch_minJs = gulp.watch('./src/css/*.min.css',['css_minCss']);
-/*watch_minJs.on('change',function(){
-    console.log('*.min.css有改动.');
-});
-watch_minJs.on('added',function(){
-    console.log('*.min.css有增加.');
-});
-watch_minJs.on('deleted',function(){
-    console.log('*.min.css有删除.');
-});*/
 
 
 
@@ -194,32 +194,33 @@ watch_minJs.on('change',function(){
 
 
 
+
 /*
 *   删除文件
 */
 // 清空css
 gulp.task('del_css',function(lc){
-    del('view/assets/css/**/*',lc);
+    del(cssDest+'**/*',lc);
 });
 // 清空fonts
 gulp.task('del_fonts',function(lc){
-    del('view/assets/fonts/**/*',lc);
+    del(fontsDest+'**/*',lc);
 });
 // 清空js
 gulp.task('del_js',function(lc){
-    del('view/assets/js/**/*',lc);
+    del(jsDest+'**/*',lc);
 });
 // 清空图片库
 gulp.task('del_images',function(lc){
-    del('view/assets/images/**/*',lc);
+    del(imagesDest+'**/*',lc);
 });
 // 清空插件库
 gulp.task('del_plugins',function(lc){
-    del('view/assets/plugins/**/*',lc);
+    del(pluginsDest+'**/*',lc);
 });
 // 清空others
 gulp.task('del_others',function(lc){
-    del('view/assets/others/**/*',lc);
+    del(othersDest+'**/*',lc);
 });
 // 清空所有生产环境
 gulp.task('del_all',
@@ -242,15 +243,15 @@ gulp.task('copy_all',
 gulp.task('copy_css',['css_clean','css_css','css_minCss'], function(){});
 // copy fonts
 gulp.task('copy_fonts',function(){
-    return gulp.src('src/fonts/**')
-    .pipe( gulp.dest('view/assets/fonts') )
+    return gulp.src(fontsSrc+'**/*')
+    .pipe( gulp.dest(fontsDest) )
     .pipe( reload({stream: true}) );
 });
 // copy images
 gulp.task('copy_images',function(){
-    return gulp.src('src/images/**')
-    // .pipe( imagemin() )
-    .pipe( gulp.dest('view/assets/images') )
+    return gulp.src(imagesSrc+'**/*')
+    .pipe( imagemin() )
+    .pipe( gulp.dest(imagesDest) )
     // .pipe( livereload() )
     .pipe( reload({stream: true}) );
 });
@@ -262,8 +263,8 @@ gulp.task('copy_others',function(){
 });
 // 复制插件
 gulp.task('copy_plugins',function(){
-    return gulp.src('src/plugins/**/*')
-    .pipe( gulp.dest('view/assets/plugins/') )
+    return gulp.src(pluginsSrc+'**/*')
+    .pipe( gulp.dest(pluginsDest) )
     .pipe( reload({stream: true}) );
 });
 
