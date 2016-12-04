@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 /*引入变量*/
-@import "variable.lcno";
+@import "scss/variable";
 /*normalize.css*/
-@import "normalize.lcno";
+@import "scss/normalize";
 /*填充*/
-@import "marginPadding.lcno";
+@import "scss/marginPadding";
 
 /*reset*/
 *{
@@ -235,6 +235,12 @@ i{
 }
 .lc-btn-main1:hover{
   background-color: $mainColor1Hover;
+}
+
+.lc-btn-lg{
+  font-size:16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 /*表格*/
 .lc-table {

@@ -1209,6 +1209,12 @@ i {
   background-color: #3368ba;
 }
 
+.lc-btn-lg {
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 /*表格*/
 .lc-table {
   width: 100%;
