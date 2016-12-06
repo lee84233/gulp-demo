@@ -29,18 +29,18 @@ gulp.task('watch:css',function(){
 
         if( event=='add' ){
             if( extScss ){
-                console.log('添加scss');
+                // console.log('添加scss');
                 gulp.start('css_sass');
             }else{
                 if( extMin ){
-                    console.log('添加 min.css');
+                    // console.log('添加 min.css');
                     gulp.start('css_minCss');
                 }else{
                     gulp.start('css_css');
                 }
             }
         }else if( event=='change' ){
-            console.log('改变css');
+            // console.log('改变css');
             if( extScss ){
                 gulp.start('css_sass');
             }else{
@@ -68,28 +68,28 @@ gulp.task('watch:css',function(){
 gulp.task('watch:js',function(){
 
     browserSync.watch( path.js.srcPath, function(event,file) {
-        console.log('type:' + event);
+        // console.log('type:' + event);
         // 改变图片路径
         var ext = file.slice( file.lastIndexOf('\\')+1 );
         var extMin = ext.indexOf('min') + 1;
         var delJsPath = path.js.dest+'/'+ext;
 
         if( event=='add' ){
-            console.log('添加js');
+            // console.log('添加js');
             if( extMin ){
                 gulp.start('js_min');
             }else{
                 gulp.start('js_deal');
             }
         }else if( event=='change' ){
-            console.log('改变js');
+            // console.log('改变js');
             if( extMin ){
                 gulp.start('js_min');
             }else{
                 gulp.start('js_deal');
             }
         }else if( event=='unlink' ){
-            console.log('删除js');
+            // console.log('删除js');
             del.sync( [delJsPath] );
         }else{
             console.log('我不清楚js执行了什么鬼操作');
@@ -107,19 +107,19 @@ gulp.task('watch:js',function(){
 gulp.task('watch:images',function(){
 
     browserSync.watch( path.images.src, function(event,file) {
-        console.log('type:' + event);
+        // console.log('type:' + event);
         // 改变图片路径
         var destImage = path.images.dest+'/'+file.slice( file.lastIndexOf('\\')+1 );
 
         if( event=='add' ){
-            console.log('添加图片');
+            // console.log('添加图片');
             gulp.start('build-images');
         }else if( event=='change' ){
-            console.log('改变图片');
+            // console.log('改变图片');
             del.sync( [destImage] );
             gulp.start('build-images');
         }else if( event=='unlink' ){
-            console.log('删除图片');
+            // console.log('删除图片');
             del.sync( [destImage] );
         }else{
             console.log('我不清楚图片执行了什么鬼操作');

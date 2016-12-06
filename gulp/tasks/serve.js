@@ -50,12 +50,12 @@ var gulp = require('gulp'),
     // 环境
     if( argv.env=='develop' || !argv.env ){
         envirment = false;
-        console.log('正在运行开发环境');
+        // console.log('正在运行开发环境');
     }else if(argv.env=='produce'){
         envirment = true;
-        console.log('正在运行生产环境');
+        // console.log('正在运行生产环境');
     }else{
-        console.log('没看懂输入了什么鬼');
+        console.log('env命令错误');
     }
 
     // 监听css、js、images
@@ -65,9 +65,13 @@ var gulp = require('gulp'),
     }
 
     // 是否打开浏览器
-    var open = true;
-    if( argv.open==='false' ){
+    var open;
+    if( argv.open==='true' ){
+        open = true;
+    }else if( argv.open==='false' ){
         open = false;
+    }else{
+        console.error('open指令输入错误，执行默认指令true');
     }
 
 
@@ -285,7 +289,6 @@ gulp.task('js_deal',function() {
     .pipe( sourcemaps.write('maps') )
 
     .pipe( gulp.dest( path.js.dest ) )
-    // .pipe( livereload() )
     .pipe( reload({stream: true}) );
 });
 
@@ -305,7 +308,6 @@ gulp.task('js_min',function(){
 // copy images
 gulp.task('build-images',function(){
     return gulp.src( path.images.src )
-    // .pipe( imagemin() )
     .pipe(
         cache(
             imagemin({
