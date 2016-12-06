@@ -66,7 +66,7 @@ var gulp = require('gulp'),
 
     // 是否打开浏览器
     var open;
-    if( argv.open==='true' ){
+    if( argv.open==='true' || !argv.open ){
         open = true;
     }else if( argv.open==='false' ){
         open = false;
