@@ -58,6 +58,19 @@ var gulp = require('gulp'),
         console.log('没看懂输入了什么鬼');
     }
 
+    // 监听css、js、images
+    var watchMore = true;
+    if( !argv.noWatch ){
+        watchMore = argv.noWatch;
+    }
+
+    // 是否打开浏览器
+    var open = true;
+    if( argv.open==='false' ){
+        open = false;
+    }
+
+
 
 
 
@@ -74,7 +87,7 @@ gulp.task('serve', function() {
         //不显示在浏览器中的任何通知。
         notify: false,
         // 打开浏览器
-        open:false,
+        open:open,
 
         // 代理
         // proxy: "你的域名或IP"
@@ -90,38 +103,27 @@ gulp.task('serve', function() {
 gulp.task('watch', function(){
     // console.dir(path.css.cleanCss);
 
-
     gulp.watch( path.css.src.scss, ['css_sass'] );
-
     gulp.watch( path.css.src.css, ['css_css'] );
     gulp.watch( path.css.src.minCss, ['css_minCss'] );
 
     gulp.watch( path.js.src.js,['js_deal'] );
     gulp.watch( path.js.src.minJs,['js_min'] );
 
-    browserSync.watch( path.images.src, function(event,file) {
-        // console.log('type:' + event);
-        // 改变图片路径
-        var destImage = path.images.dest+'/'+file.slice( file.lastIndexOf('\\')+1 );
+    gulp.watch( path.html ).on('change', reload);
 
-        if( event=='add' ){
-            // console.log('添加图片');
-            gulp.start('build-images');
-        }else if( event=='change' ){
-            // console.log('改变图片');
-            del.sync( [destImage] );
-            gulp.start('build-images');
-        }else if( event=='unlink' ){
-            // console.log('删除图片');
-            del.sync( [destImage] );
-        }else{
-            console.log('我不清楚图片执行了什么鬼操作');
-        }
-    });
+    if( watchMore==true || !watchMore  ){
+        gulp.start('watch:css','watch:js','watch:images');
+    }else if( watchMore==='less' ){
+        gulp.start('watch:css','watch:js');
+    }else if( watchMore==='close' ){
+        console.log('不监听资源注入');
+    }else{
+        console.log('noWatch输入了什么鬼');
+    }
 
     // gulp.watch( path.plugins.src+'**/*',['copy_plugins'] );
 
-    gulp.watch( path.html ).on('change', reload);
 });
 
 
@@ -255,6 +257,7 @@ gulp.task('css_minCss',function(){
 
 
 
+
 /**
  * js 检测和压缩
  * @author Lee
@@ -276,15 +279,16 @@ gulp.task('js_deal',function() {
 
     .pipe( sourcemaps.init() )
         .pipe( uglify() )
-        .pipe( rename(function(path){
+        /*.pipe( rename(function(path){
             path.basename += '.min'
-        }) )
-    .pipe( sourcemaps.write() )
+        }) )*/
+    .pipe( sourcemaps.write('maps') )
 
     .pipe( gulp.dest( path.js.dest ) )
     // .pipe( livereload() )
     .pipe( reload({stream: true}) );
 });
+
 
 // *.min.js
 gulp.task('js_min',function(){

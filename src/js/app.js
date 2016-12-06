@@ -1,11 +1,11 @@
-console.log(255);
+console.log(250);
 // iconfont
 var iconfontUrl = '//at.alicdn.com/t/font_1473830886_520488.css';
 $('#iconfont').attr('href',iconfontUrl);
 
 
 $(document).ready(function() {
-	
+
 	// IE
 	if( myBrowser()=='IE' ){
 		if(myBrowser("IEVersion")<=9){
@@ -62,7 +62,7 @@ function delCookie(name){
   var exp = new Date();
   exp.setTime(exp.getTime() - 1);
   var cval=getCookie(name);
-  if(cval!=null)
+  if(cval!==null)
     document.cookie= name +"="+cval+";expires="+exp.toGMTString();
 }
 // 时间设置
@@ -187,7 +187,7 @@ function myBrowser(IEVersion){
     }else{  // 判定IE版本
     	var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
 		reIE.test(userAgent);
-		var fIEVersion = parseFloat(RegExp["$1"]);
+		var fIEVersion = parseFloat(RegExp['$1']);
 		if (fIEVersion == 7) {
 			return 7;
 		} else if (fIEVersion == 8) {

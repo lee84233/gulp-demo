@@ -26,6 +26,7 @@ module.exports = {
 	html:baseDir+'/*.{html,php}',
 
 	css:{
+		srcPath:src+'/css',
 		src:{
 			// 需要编译的scss
 			scss:src+'/css/*.scss',
@@ -43,6 +44,7 @@ module.exports = {
 	},
 
 	js:{
+		srcPath:src+'/js',
 		src:{
 			js:[
 				src+'/js/*.js',
@@ -71,5 +73,5 @@ module.exports = {
     others:{
     	src: src + '/others/**/*',
     	dest: dest + '/others'
-    }
+    },
 };
