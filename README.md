@@ -1,15 +1,14 @@
 
-
 # Gulp demo
 
-标签（空格分隔）： gulp
+标签： gulp、自动化构建工具
 
 ---
 
 
 # 写在前面
-1. 环境：node、gulp。[『node、gulp安装教程』](http://blog.csdn.net/qq_23215957/article/details/51050460 "如有问题请联系842337932@qq.com")
-2. 终端：系统终端，推荐使用cmder工具替代。
+1. 依赖环境：node、gulp。[『node、gulp安装教程』](http://blog.csdn.net/qq_23215957/article/details/51050460 "如有问题请联系842337932@qq.com")
+2. 终端：系统终端，推荐cmder工具。
 
 
 # 1 启动默认任务
