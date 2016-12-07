@@ -1,10 +1,15 @@
-[『gulp安装教程』](http://blog.csdn.net/qq_23215957/article/details/51050460 "如有问题请联系842337932@qq.com")
+
 
 # Gulp demo
 
 标签（空格分隔）： gulp
 
 ---
+
+
+# 写在前面
+1. 环境：node、gulp。[『node、gulp安装教程』](http://blog.csdn.net/qq_23215957/article/details/51050460 "如有问题请联系842337932@qq.com")
+2. 终端：系统终端，推荐使用cmder工具替代。
 
 
 # 1 启动默认任务
@@ -28,26 +33,26 @@ gulp <taskName>
 # 2 参数
 
 ## 2.1 env-环境（默认值：develop）
-**develop**:`css`、`js`未压缩（开发环境推荐使用）	
-**produce**:`css`、`js`压缩版（生产，上线推荐使用）
+1. **develop**:`css`、`js`未压缩（开发环境推荐使用）		
+2. **produce**:`css`、`js`压缩版（生产，上线推荐使用）
 ```
 gulp --env=develop
 gulp --env=produce
 ```
 
 ## 2.2 mode-起始模式（默认值：continue）
-**continue**：启动服务，监听资源
-**compile**：编译资源，启动服务，监听资源
-**del**：清空资源、编译资源，启动服务，监听资源
+1. **continue**：启动服务，监听资源
+2. **compile**：编译资源，启动服务，监听资源
+3. **del**：清空资源、编译资源，启动服务，监听资源
 ```
 gulp --mode=compile
 gulp --mode=del
 ```
 
 ## 2.3 noWatch-监听注入（默认值：true）
-**true**：监听资源注入(css、js、images)
-**less**：监听资源注入(css、js）
-**close**：不监听资源注入
+1. **true**：监听资源注入(css、js、images)
+2. **less**：监听资源注入(css、js）
+3. **close**：不监听资源注入
 
 *说明*：
 1. 监听过多资源，内存消耗大，根据电脑配置选择监听资源多少
