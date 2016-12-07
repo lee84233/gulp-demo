@@ -28,7 +28,7 @@ gulp <taskName>
 # 2 参数
 
 ## 2.1 env-环境（默认值：develop）
-**develop**:`css`、`js`未压缩（开发环境推荐使用）
+**develop**:`css`、`js`未压缩（开发环境推荐使用）	
 **produce**:`css`、`js`压缩版（生产，上线推荐使用）
 ```
 gulp --env=develop
