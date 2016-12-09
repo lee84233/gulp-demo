@@ -59,8 +59,8 @@ var gulp = require('gulp'),
     }
 
     // 监听css、js、images
-    var watchMore = true;
-    if( !argv.noWatch ){
+    var watchMore = 'all';
+    if( argv.noWatch ){
         watchMore = argv.noWatch;
     }
 
@@ -116,7 +116,7 @@ gulp.task('watch', function(){
 
     gulp.watch( path.html ).on('change', reload);
 
-    if( watchMore==true || !watchMore  ){
+    if( watchMore=='all'  ){
         gulp.start('watch:css','watch:js','watch:images');
     }else if( watchMore==='less' ){
         gulp.start('watch:css','watch:js');
