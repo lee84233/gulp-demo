@@ -34,7 +34,7 @@ module.exports = {
 				src+'/css/*.css',
 				'!'+src+'/css/*.min.css'
 			],
-			minCss:src+'/*.min.css'
+			minCss:src+'/css/*.min.css'
 		},
 		dest:dest+'/css',
 		cleanCss:[
