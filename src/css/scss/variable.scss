@@ -1,10 +1,12 @@
 @charset "UTF-8";
 
+
 /*主色调*/
 $mainColor1:#2255a4;
-$mainColor1Hover:#3368ba;
+$mainColor1Hover: darken($mainColor1,10%);
+
 $mainColor2:#00a0e9;
-$mainColor2Hover:#018bca;
+$mainColor2Hover: darken($mainColor2,10%);
 
 /*字体颜色*/
 $fontgrey1:#888888;
