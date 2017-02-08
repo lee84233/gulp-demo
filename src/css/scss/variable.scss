@@ -8,6 +8,10 @@ $mainColor1Hover: darken($mainColor1,10%);
 $mainColor2:#00a0e9;
 $mainColor2Hover: darken($mainColor2,10%);
 
+/*默认字体*/
+$fontDefaultColor:#000;
+$fontDefaultSize:14px;
+
 /*字体颜色*/
 $fontgrey1:#888888;
 
@@ -16,13 +20,13 @@ $bodyBg:#f0f1f3;
 
 /*常用颜色*/
 $info:#0e90d2;
-$infoHover:#00a0e9;
+$infoHover:darken($info,10%);
 $danger:#dd514c;
-$dangerHover:#d7342e;
+$dangerHover:darken($danger,10%);
 $success:#5eb95e;
-$successHover:#4aaa4a;
+$successHover:darken($success,10%);
 $warning:#F37B1D;
-$warningHover:#e0690c;
+$warningHover:darken($warning,10%);
 
 /*边框颜色*/
 $borderColor:#d3d3d3;

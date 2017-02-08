@@ -1,67 +1,64 @@
 @charset "UTF-8";
 
 /*引入变量*/
-@import "scss/variable";
+@import "scss/variable.scss";
 /*normalize.css*/
-@import "scss/normalize";
-/*填充*/
-@import "scss/marginPadding";
-
+@import "scss/normalize.scss";
 /*reset*/
-*{
-  padding:0;
-  margin:0;
-}
-ul,ol,li{
-  list-style: none;
-}
-html,body{
-  font-size:14px;
-  font-family: Helvetica, Arial, "Microsoft YaHei";
-}
-a{
-  text-decoration: none;
-  @include transFunc(0.2s);
-}
-input,textarea,img,a,button,select{ outline: none; }
-i{
-  font-style:normal;
-}
+@import "scss/reset.scss";
+
+
 /*字体*/
-.font12{font-size:12px!important;}
-.font14{font-size:14px!important;}
-.font16{font-size:16px!important;}
-.font18{font-size:18px!important;}
-.font20{font-size:20px!important;}
-.font22{font-size:22px!important;}
-.font24{font-size:24px!important;}
-.font26{font-size:26px!important;}
-.font28{font-size:28px!important;}
-.font32{font-size:32px!important;}
+.font12{ font-size:12px!important;}
+.font14{ font-size:14px!important;}
+.font16{ font-size:16px!important;}
+.font18{ font-size:18px!important;}
+.font20{ font-size:20px!important;}
+.font22{ font-size:22px!important;}
+.font24{ font-size:24px!important;}
+.font26{ font-size:26px!important;}
+.font28{ font-size:28px!important;}
+.font32{ font-size:32px!important;}
 
 /*颜色处理*/
-.lc-text-main1,.lc-link-main1{ color:$mainColor1; }
+.lc-text-main1{ color:$mainColor1!important; }
+.lc-link-main1{ color:$mainColor1; }
 .lc-link-main1:hover{ color:$mainColor1Hover; }
 
-.lc-text-main2{ color:$mainColor2; }
+.lc-text-main2{ color:$mainColor2!important; }
+.lc-link-main2{ color:$mainColor2; }
+.lc-link-main2:hover{ color:$mainColor2Hover; }
 
-.lc-text-grey1{ color:$fontgrey1!important; }
+
 .lc-text-white{ color:#fff!important; }
+.lc-text-grey1{ color:$fontgrey1!important; }
 
-.lc-text-info,.lc-link-info{ color:$info!important; }
+
+.lc-text-info{ color:$info!important; }
+.lc-link-info{ color:$info; }
 .lc-link-info:hover{ color:$infoHover; }
 
-.lc-text-warning{ color:$warning!important; }
+.lc-text-success{ color:$success!important; }
+.lc-link-success{ color:$success; }
+.lc-link-success:hover{ color:$successHover; }
 
-.lc-text-danger,.lc-link-danger{ color:$danger!important; }
+.lc-text-warning{ color:$warning!important; }
+.lc-link-warning{ color:$warning; }
+.lc-link-warning:hover{ color:$warningHover; }
+
+.lc-text-danger{ color:$danger!important; }
+.lc-link-danger{ color:$danger; }
 .lc-link-danger:hover{ color:$dangerHover; }
 
-.lc-bg-body{ background-color:$bodyBg; }
-.lc-bg-white{ background-color:white; }
-.lc-bg-main1{ background-color:$mainColor1; }
-.lc-bg-main2{ background-color:$mainColor2; }
-.lc-bg-info{ background-color: $info; }
-.lc-bg-danger{ background-color: $danger; }
+
+.lc-bg-body   { background-color:$bodyBg; }
+.lc-bg-white  { background-color:white; }
+
+.lc-bg-main1  { background-color:$mainColor1; }
+.lc-bg-main2  { background-color:$mainColor2; }
+
+.lc-bg-info   { background-color: $info; }
+.lc-bg-danger { background-color: $danger; }
 .lc-bg-success{ background-color: $success; }
 .lc-bg-warning{ background-color: $warning; }
 
@@ -335,3 +332,6 @@ i{
     border-bottom-right-radius: $raidus;
   }
 }
+
+/*填充*/
+@import "scss/marginPadding.scss";

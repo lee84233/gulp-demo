@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+html,
+body {
+    font-size: $fontDefaultSize;
+    color: $fontDefaultColor;
+    font-family: Helvetica, Arial, "Microsoft YaHei";
+}
+
+a {
+    text-decoration: none;
+    @include transFunc(0.2s);
+}
+
+input,
+textarea,
+img,
+a,
+button,
+select {
+    outline: none;
+}
+
+i {
+    font-style: normal;
+}
