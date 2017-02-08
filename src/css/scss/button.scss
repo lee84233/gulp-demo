@@ -1,0 +1,77 @@
+
+.lc-btn {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 8px 16px;
+  vertical-align: middle;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  background-image: none;
+  border:none;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
+  transition: background-color 300ms ease-out, border-color 300ms ease-out;
+}
+.lc-btn-block {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.lc-btn-default {
+  color: #444;
+  background-color: #e6e6e6;
+}
+.lc-btn-default:hover{
+  color: #444;
+  background-color: #d4d4d4;
+}
+
+.lc-btn-success {
+  color: white;
+  background-color: $success;
+}
+.lc-btn-success:hover{
+  background-color: $successHover;
+}
+
+.lc-btn-warning {
+  color: white;
+  background-color: $warning;
+}
+.lc-btn-warning:hover{
+  background-color: $warningHover;
+}
+
+.lc-btn-danger {
+  color: white;
+  background-color: $danger;
+}
+.lc-btn-danger:hover{
+  background-color: $dangerHover;
+}
+
+.lc-btn-info {
+  color: white;
+  background-color: $info;
+}
+.lc-btn-info:hover{
+  background-color: $infoHover;
+}
+
+.lc-btn-main1 {
+  color: white;
+  background-color: $mainColor1;
+}
+.lc-btn-main1:hover{
+  background-color: $mainColor1Hover;
+}
