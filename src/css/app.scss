@@ -9,13 +9,12 @@
 
 /*浏览器提示*/
 .browserCnt{
-	> span{ line-height: 32px; }
+	> span{ line-height: 30px; }
 }
 
 
 /*在此写你的项目scss*/
 .h1{
 	color:$success;
-	background: $tableHoverBgColor;
 	margin-top:10px;
 }

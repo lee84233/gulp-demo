@@ -1,17 +1,19 @@
+/**
+ * button
+ */
+
 
 .lc-btn {
   display: inline-block;
-  margin-bottom: 0;
-  padding: 8px 16px;
+  padding: $btn-padding-vertical $btn-padding-horizontal;
   vertical-align: middle;
+  line-height:1;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
   background-image: none;
   border:none;
-  border-radius: 0;
   cursor: pointer;
-  outline: none;
   -webkit-appearance: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -20,6 +22,8 @@
   -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
   transition: background-color 300ms ease-out, border-color 300ms ease-out;
 }
+
+
 .lc-btn-block {
   display: block;
   width: 100%;
@@ -27,38 +31,19 @@
   padding-right: 0;
 }
 
+
 .lc-btn-default {
-  color: #444;
-  background-color: #e6e6e6;
+    color: $btn-default-color;
+    background-color: $btn-default-bgColor;
 }
 .lc-btn-default:hover{
-  color: #444;
-  background-color: #d4d4d4;
+    color: $btn-default-color;
+    background-color: $btn-default-hover-bgColor;
+}
+.lc-btn-default:active{
+  background-color: $btn-default-active-bgColor;
 }
 
-.lc-btn-success {
-  color: white;
-  background-color: $success;
-}
-.lc-btn-success:hover{
-  background-color: $successHover;
-}
-
-.lc-btn-warning {
-  color: white;
-  background-color: $warning;
-}
-.lc-btn-warning:hover{
-  background-color: $warningHover;
-}
-
-.lc-btn-danger {
-  color: white;
-  background-color: $danger;
-}
-.lc-btn-danger:hover{
-  background-color: $dangerHover;
-}
 
 .lc-btn-info {
   color: white;
@@ -67,6 +52,46 @@
 .lc-btn-info:hover{
   background-color: $infoHover;
 }
+.lc-btn-info:active{
+  background-color: $infoActive;
+}
+
+
+.lc-btn-success {
+  color: white;
+  background-color: $success;
+}
+.lc-btn-success:hover{
+  background-color: $successHover;
+}
+.lc-btn-success:active{
+  background-color: $successActive;
+}
+
+
+.lc-btn-warning {
+  color: white;
+  background-color: $warning;
+}
+.lc-btn-warning:hover{
+  background-color: $warningHover;
+}
+.lc-btn-warning:active{
+  background-color: $warningActive;
+}
+
+
+.lc-btn-danger {
+  color: white;
+  background-color: $danger;
+}
+.lc-btn-danger:hover{
+  background-color: $dangerHover;
+}
+.lc-btn-danger:active{
+  background-color: $dangerActive;
+}
+
 
 .lc-btn-main1 {
   color: white;
@@ -74,4 +99,7 @@
 }
 .lc-btn-main1:hover{
   background-color: $mainColor1Hover;
+}
+.lc-btn-main1:active{
+  background-color: $mainColor1Acitve;
 }

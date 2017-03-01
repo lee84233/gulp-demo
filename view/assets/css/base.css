@@ -1,12 +1,27 @@
 @charset "UTF-8";
 /*引入变量*/
 /*主色调*/
+/*背景颜色*/
 /*默认字体*/
 /*字体颜色*/
-/*背景颜色*/
 /*常用颜色*/
 /*边框颜色*/
-/*表格颜色*/
+/**
+ * 按钮
+ * button.scss
+ */
+/**
+ * 表格
+ * table.scss
+ */
+/**
+ * 间距
+ * marginPadding.scss
+ */
+/**
+ * 滚动条
+ * reset.scss
+ */
 /*设置行高和行间距*/
 /*过渡效果*/
 /*normalize.css*/
@@ -424,7 +439,6 @@ textarea {
 /**
  * @Author:Bruce.Lee
  * @Date:2017-02-28
- * 
  */
 body,
 div,
@@ -454,11 +468,10 @@ pre {
   -webkit-tap-highlight-color: transparent;
 }
 
-html,
 body {
   font-size: 14px;
   color: #000;
-  font-family: Helvetica, Arial, "Microsoft YaHei";
+  font-family: Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif, "Microsoft YaHei";
 }
 
 a {
@@ -472,6 +485,8 @@ textarea,
 img,
 button,
 select,
+optgroup,
+option,
 a,
 a:active,
 a:hover {
@@ -493,20 +508,6 @@ table {
   border-spacing: 0;
 }
 
-h1,
-h2,
-h3 {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-h4,
-h5,
-h6 {
-  font-size: 100%;
-  font-weight: 400;
-}
-
 button,
 input,
 select,
@@ -524,7 +525,6 @@ option {
   font-size: inherit;
   font-style: inherit;
   font-weight: inherit;
-  outline: 0;
 }
 
 pre {
@@ -537,6 +537,36 @@ pre {
 
 i, em {
   font-style: normal;
+}
+
+/**
+ * 滚动条
+ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-button:vertical {
+  display: none;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background-color: #e2e2e2;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+  background-color: rgba(0, 0, 0, 0.38);
 }
 
 /*字体*/
@@ -743,12 +773,16 @@ i, em {
 }
 
 /*显隐 和 浮动*/
+.lc-inline {
+  display: inline-block;
+}
+
 .lc-nbfc {
   overflow: hidden;
 }
 
-.lc-inline {
-  display: inline-block;
+.lc-clear-nbfc {
+  clear: both;
 }
 
 .lc-fl {
@@ -757,10 +791,6 @@ i, em {
 
 .lc-fr {
   float: right;
-}
-
-.clear-nbfc {
-  clear: both;
 }
 
 .lc-show {
@@ -806,7 +836,7 @@ i, em {
   border: 1px solid #d3d3d3;
 }
 
-.lc-border-clear {
+.lc-clear-border {
   border: none !important;
 }
 
@@ -876,19 +906,20 @@ i, em {
 }
 
 /*按钮*/
+/**
+ * button
+ */
 .lc-btn {
   display: inline-block;
-  margin-bottom: 0;
   padding: 8px 16px;
   vertical-align: middle;
+  line-height: 1;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
   background-image: none;
   border: none;
-  border-radius: 0;
   cursor: pointer;
-  outline: none;
   -webkit-appearance: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -912,34 +943,11 @@ i, em {
 
 .lc-btn-default:hover {
   color: #444;
-  background-color: #d4d4d4;
+  background-color: #cdcdcd;
 }
 
-.lc-btn-success {
-  color: white;
-  background-color: #5eb95e;
-}
-
-.lc-btn-success:hover {
-  background-color: #459f45;
-}
-
-.lc-btn-warning {
-  color: white;
-  background-color: #F37B1D;
-}
-
-.lc-btn-warning:hover {
-  background-color: #d2620b;
-}
-
-.lc-btn-danger {
-  color: white;
-  background-color: #dd514c;
-}
-
-.lc-btn-danger:hover {
-  background-color: #cf2d27;
+.lc-btn-default:active {
+  background-color: #b3b3b3;
 }
 
 .lc-btn-info {
@@ -951,6 +959,49 @@ i, em {
   background-color: #0b6fa2;
 }
 
+.lc-btn-info:active {
+  background-color: #084e72;
+}
+
+.lc-btn-success {
+  color: white;
+  background-color: #5eb95e;
+}
+
+.lc-btn-success:hover {
+  background-color: #459f45;
+}
+
+.lc-btn-success:active {
+  background-color: #367b36;
+}
+
+.lc-btn-warning {
+  color: white;
+  background-color: #F37B1D;
+}
+
+.lc-btn-warning:hover {
+  background-color: #d2620b;
+}
+
+.lc-btn-warning:active {
+  background-color: #a14c09;
+}
+
+.lc-btn-danger {
+  color: white;
+  background-color: #dd514c;
+}
+
+.lc-btn-danger:hover {
+  background-color: #cf2d27;
+}
+
+.lc-btn-danger:active {
+  background-color: #a4241f;
+}
+
 .lc-btn-main1 {
   color: white;
   background-color: #2255a4;
@@ -958,6 +1009,10 @@ i, em {
 
 .lc-btn-main1:hover {
   background-color: #193f7a;
+}
+
+.lc-btn-main1:active {
+  background-color: #102950;
 }
 
 /*表格*/
@@ -974,12 +1029,12 @@ i, em {
 .lc-table > tbody > tr > td,
 .lc-table > tfoot > tr > td {
   padding: 8px;
-  vertical-align: top;
+  vertical-align: center;
   border-top: 1px solid #ddd;
 }
 
 .lc-table > thead > tr > th {
-  vertical-align: bottom;
+  vertical-align: center;
   border-bottom: 1px solid #ddd;
 }
 
@@ -1081,21 +1136,16 @@ i, em {
 /*填充*/
 /**
  * 0  0px
- * xl 5px
- * sm 10px
- * default 15px
- * lg 20px
- * xl 30px
+ * xl $distance-xs
+ * sm $distance-sm
+ * default $distance-default
+ * lg $distance-lg
+ * xl $distance-xl
  *
  * vertical 上下
  * horizontal 左右
  * top bottom left right 上下左右
  */
-.lc-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .lc-margin {
   margin: 15px;
 }

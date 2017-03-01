@@ -1,7 +1,6 @@
 /**
  * @Author:Bruce.Lee
  * @Date:2017-02-28
- * 
  */
 
 body,
@@ -32,11 +31,10 @@ pre {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
-html,
 body {
     font-size: $fontDefaultSize;
     color: $fontDefaultColor;
-    font-family: Helvetica, Arial, "Microsoft YaHei";
+    font-family: $fontDefaultFamily;
 }
 
 a {
@@ -72,20 +70,6 @@ table {
     border-spacing: 0;
 }
 
-h1,
-h2,
-h3 {
-    font-size: 14px;
-    font-weight: 400;
-}
-
-h4,
-h5,
-h6 {
-    font-size: 100%;
-    font-weight: 400;
-}
-
 button,
 input,
 select,
@@ -115,4 +99,39 @@ pre {
 
 i,em{
     font-style: normal;
+}
+
+
+
+
+/**
+ * 滚动条
+ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+// 滚动条 轨道 两端按钮
+::-webkit-scrollbar-button:vertical {
+    display: none;
+}
+
+// 滚动条 轨道
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+    background-color: $scrollbar-corner-bgColor;
+}
+
+// 滚动条 小方块
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: $scrollbar-thumb-color;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: $scrollbar-thumb-color-hover;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+    background-color: $scrollbar-thumb-color-active;
 }
