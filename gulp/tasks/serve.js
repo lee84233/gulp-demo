@@ -45,13 +45,16 @@ var gulp = require('gulp'),
     argv = require('yargs').argv;
 
 
+
+
+
     // develop | produce  默认develop
     var envirment = false;
     // 环境
-    if( argv.env=='develop' || !argv.env ){
+    if( argv.env==='develop' || !argv.env ){
         envirment = false;
         // console.log('正在运行开发环境');
-    }else if(argv.env=='produce'){
+    }else if( argv.env==='produce' ){
         envirment = true;
         // console.log('正在运行生产环境');
     }else{

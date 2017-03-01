@@ -8,32 +8,50 @@ $mainColor1Hover: darken($mainColor1,10%);
 $mainColor2:#00a0e9;
 $mainColor2Hover: darken($mainColor2,10%);
 
-/*默认字体*/
-$fontDefaultColor:#000;
-$fontDefaultSize:14px;
-
-/*字体颜色*/
-$fontgrey1:#888888;
 
 /*背景颜色*/
 $bodyBg:#f0f1f3;
 
+/*默认字体*/
+$fontDefaultColor:#000;
+$fontDefaultSize:14px;
+
+
+
+/*字体颜色*/
+$fontgrey1:#888888;
+
+
 /*常用颜色*/
 $info:#0e90d2;
 $infoHover:darken($info,10%);
+
 $danger:#dd514c;
 $dangerHover:darken($danger,10%);
+
 $success:#5eb95e;
 $successHover:darken($success,10%);
+
 $warning:#F37B1D;
 $warningHover:darken($warning,10%);
+
 
 /*边框颜色*/
 $borderColor:#d3d3d3;
 
-/*表格颜色*/
-$tableBorderColor:#ddd;
-$tableHoverBgColor:#e9e9e9;
+
+/**
+ * 表格
+ * @type {[type]}
+ */
+$table-border-color:#ddd;
+$table-bg-hover-color:#e9e9e9;
+
+$table-padding:8px;
+$table-radius: 8px;
+
+
+
 
 
 /*设置行高和行间距*/
@@ -41,6 +59,7 @@ $tableHoverBgColor:#e9e9e9;
   height:$h;
   line-height: $h;
 }
+
 
 /*过渡效果*/
 @mixin transFunc($s:0.4s){
