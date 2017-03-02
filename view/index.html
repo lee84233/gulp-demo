@@ -28,7 +28,7 @@
 
 <!-- 在此写你的代码 -->
 
-<h1 class="lc-link-main1">Hello,world.</h1>
+<h1 class="lc-text-main1" id="test">Hello,world.</h1>
 <hr>
 <button class="lc-btn lc-btn-default">按钮</button>
 <button class="lc-btn lc-btn-info">按钮</button>
@@ -40,10 +40,25 @@
 
 <!-- script -->
 <script src="assets/js/jquery-1.12.4.min.js"></script>
+<script src="assets/js/bowser.js"></script>
 <!--[if lt IE 9]>
   <script src="assets/js/html5shiv.min.js"></script>
   <script src="assets/js/respond.min.js"></script>
 <![endif]-->
 <script src="assets/js/app.js"></script>
+<script>
+$(document).ready(function() {
+
+	$('#test').html(bowser.name+','+bowser.version);
+	try{
+		console.dir(bowser);
+		console.log(bowser.check({msie: "11"}));
+		console.log(bowser.check({msie: "9.0"}));
+		console.log(bowser.msie);
+	}catch(e){
+
+	}
+});
+</script>
 </body>
 </html>

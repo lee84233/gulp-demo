@@ -14,6 +14,9 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
 
+    // 合并
+    concat = require('gulp-concat'),
+
     // 图片处理
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),

@@ -1,4 +1,4 @@
-console.log(250);
+
 // iconfont
 var iconfontUrl = '//at.alicdn.com/t/font_1473830886_520488.css';
 $('#iconfont').attr('href',iconfontUrl);

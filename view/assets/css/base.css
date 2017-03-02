@@ -919,6 +919,7 @@ i, em {
   white-space: nowrap;
   background-image: none;
   border: none;
+  border-radius: 2px;
   cursor: pointer;
   -webkit-appearance: none;
   -webkit-user-select: none;
