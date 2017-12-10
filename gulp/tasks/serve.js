@@ -45,7 +45,10 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
 
     // 获取cmd参数
-    argv = require('yargs').argv;
+    argv = require('yargs').argv,
+
+    // es6
+    babel = require('gulp-babel');
 
 
 
@@ -288,7 +291,10 @@ gulp.task('js_deal',function() {
     .pipe( gulp.dest( path.js.dest ) )
 
     .pipe( sourcemaps.init() )
-        .pipe( uglify() )
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        // .pipe( uglify() )
         /*.pipe( rename(function(path){
             path.basename += '.min'
         }) )*/

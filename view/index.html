@@ -35,30 +35,19 @@
 <button class="lc-btn lc-btn-success">按钮4545</button>
 <button class="lc-btn lc-btn-warning">按钮</button>
 
-<div style="height:1000px;">454</div>
+<div style="height:1000px;">
+	我是一个很长的div，有1000px高。
+</div>
 
 
 <!-- script -->
 <script src="assets/js/jquery-1.12.4.min.js"></script>
-<script src="assets/js/bowser.js"></script>
+<!-- <script src="assets/js/bowser.js"></script> -->
 <!--[if lt IE 9]>
   <script src="assets/js/html5shiv.min.js"></script>
   <script src="assets/js/respond.min.js"></script>
 <![endif]-->
-<script src="assets/js/app.js"></script>
-<script>
-$(document).ready(function() {
-
-	$('#test').html(bowser.name+','+bowser.version);
-	try{
-		console.dir(bowser);
-		console.log(bowser.check({msie: "11"}));
-		console.log(bowser.check({msie: "9.0"}));
-		console.log(bowser.msie);
-	}catch(e){
-
-	}
-});
-</script>
+<script src="assets/js/es6.js"></script>
+<script></script>
 </body>
 </html>
